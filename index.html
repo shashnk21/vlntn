@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine 💖</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #ffe9f1);
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.25);
+      text-align: center;
+      max-width: 90%;
+      width: 380px;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      min-width: 100px;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .yes-btn {
+      background: #ff4d88;
+      color: white;
+      box-shadow: 0 6px 15px rgba(255, 77, 136, 0.4);
+    }
+
+    .no-btn {
+      background: #f1f1f1;
+      color: #333;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .result {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .result img {
+      max-width: 200px;
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    .result p {
+      font-size: 1.2rem;
+      color: #e91e63;
+      font-weight: 600;
+    }
+
+    .error {
+      margin-top: 1rem;
+      color: #ff1744;
+      font-weight: 600;
+      display: none;
+      animation: shake 0.3s ease-in-out;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <div id="question-section">
+      <h1>Hey Preeti, will you be my Valentine? 💖</h1>
+      <div class="buttons">
+        <button class="yes-btn" onclick="sayYes()">✅ Yes</button>
+        <button class="no-btn" onclick="sayNo()">❌ No</button>
+      </div>
+      <div class="error" id="error-msg">Error 404: Wrong answer 😜 Try again!</div>
+    </div>
+
+    <div class="result" id="result-section">
+      <img 
+        src="https://tenor.com/view/cat-heart-heart-cat-gif-5127836928651260517" 
+        alt="Cute cat with heart" 
+      />
+      <p>Yay!! You made my day ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById('question-section').style.display = 'none';
+      document.getElementById('result-section').style.display = 'flex';
+    }
+
+    function sayNo() {
+      const error = document.getElementById('error-msg');
+      error.style.display = 'block';
+      error.style.animation = 'none';
+      error.offsetHeight; // trigger reflow
+      error.style.animation = 'shake 0.3s ease-in-out';
+    }
+  </script>
+
+</body>
+</html>
